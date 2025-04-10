@@ -10,5 +10,6 @@ def say_hello(request):
     # pull data from db
     # tranform data
     # send email
-    return HttpResponse("hello world")
+    # return HttpResponse("hello world")
+    return render(request , 'hello.html' ,{'name':'onkar'})
 
