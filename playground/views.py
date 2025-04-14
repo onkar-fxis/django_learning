@@ -48,12 +48,32 @@ class TransactionAPI(APIView):
             })
         serilizer.save()
         return Response({
-            "message": "Post request succsfull"
+            "message": "Post request succsfull",
+            "data": serilizer.data
         })
     
     def put(self, request) :
+
+        data = request.data 
+
+        if not data.get("id"):
+            return Response({
+                "message": "error",
+                "errors" : "id is required"
+            })
+        
+        transactiondata = Transactions.objects.get(id = data.get("id"))
+        serializer = TransactionSerializer(transactiondata, data = data ,  partial = True)
+
+        if not serializer.is_valid():
+            return Response({
+                "message":"data not saved",
+                "errors" : serializer.errors
+            })
+        serializer.save()
         return Response({
-            "message": "This is a Put requst"
+            "message": "This is a Put requst",
+            "data" : serializer.data
         })
     
     def delete(self, request):
