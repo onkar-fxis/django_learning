@@ -77,6 +77,18 @@ class TransactionAPI(APIView):
         })
     
     def delete(self, request):
+
+        data =  request.data 
+
+        if not data.get("id"):
+            return Response({
+                "message" : "error",
+                "errors" : "id is required field"
+            })
+        transaction = Transactions.objects.get(id = data.get("id")).delete()
+        
+
         return Response({
-            "message": "This is a delete request"
+            "message": "data deleted",
+            "data" : {}
         })
