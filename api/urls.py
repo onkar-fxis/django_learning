@@ -3,6 +3,8 @@ from playground import views
 
 
 urlpatterns = [
-        path("get-transaction/" , views.get_transactions)
+        # path("get-transaction/" , views.get_transactions),
+        path("transactions/" , views.TransactionAPI.as_view())
+
 
 ]
