@@ -110,14 +110,8 @@ class ProfileView(APIView):
     permission_classes = [IsAuthenticated] 
     def get(self, request):
         user = request.user
-        return Response({
-            "username": user.username,
-            "email": user.email,
-            "id": user.id,
-        })
-
-
-
+        serializer = RegisterSerializer(user)
+        return Response(serializer.data)
 
 
 
