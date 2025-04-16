@@ -16,13 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-
+from playground.views import RegisterView
+from playground.views import RegisterView, LoginView,ProfileView
 # need to add include
 # add all the app urls here 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/' , include('playground.urls')),
-        path('api/' , include('api.urls'))
+    path('api/' , include('api.urls')),
+    path('api/register/' , RegisterView.as_view()),
+    path('api/login/', LoginView.as_view()),      
+    path('api/profile/', ProfileView.as_view()),      
+
 
 ]
