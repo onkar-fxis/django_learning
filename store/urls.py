@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-from playground.views import RegisterView
 
 # need to add include
 # add all the app urls here 
@@ -25,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('playground/' , include('playground.urls')),
     path('api/' , include('api.urls')),
+    path('api2/' , include('api2.urls')  )
 ]

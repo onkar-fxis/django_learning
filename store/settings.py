@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'playground',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'api2'
 
 ]
 
